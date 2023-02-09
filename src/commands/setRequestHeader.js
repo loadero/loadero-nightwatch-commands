@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-const EventEmitter = require('events');
+const EventEmitter = require("events");
 
 class SetRequestHeader extends EventEmitter {
     command(header, value) {
