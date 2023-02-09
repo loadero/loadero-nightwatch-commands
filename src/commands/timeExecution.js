@@ -57,9 +57,10 @@ class TimeExecution extends EventEmitter {
 				cbResult.then(() => {
 					if (this.timeoutID) {
 						clearTimeout(this.timeoutID);
-						this.logSuccess(cmdName, start);
-						this.emit("complete");
 					}
+
+					this.logSuccess(cmdName, start);
+					this.emit("complete");
 				});
 
 				return this;
@@ -81,9 +82,10 @@ class TimeExecution extends EventEmitter {
 					() => {
 						if (this.timeoutID) {
 							clearTimeout(this.timeoutID);
-							this.logSuccess(cmdName, start);
-							this.emit("complete");
 						}
+						
+						this.logSuccess(cmdName, start);
+						this.emit("complete");
 					}
 				];
 
