@@ -4,22 +4,24 @@ const EventEmitter = require("events");
 
 class PerformTimed extends EventEmitter {
 	command(callback = () => {}, timeout) {
+		const _this = this;
+
 		let doneCallback;
 
 		if (!timeout) {
-			this.emit("error", new Error("Timeout is not set"));
+			_this.emit("error", new Error("Timeout is not set"));
 
 			return this;
 		}
 
 		if (timeout !== parseInt(timeout, 10)) {
-			this.emit("error", new Error("Invalid timeout value"));
+			_this.emit("error", new Error("Invalid timeout value"));
 
 			return this;
 		}
 
-		this.timeoutID = setTimeout(() => {
-			this.emit(
+		_this.timeoutID = setTimeout(() => {
+			_this.emit(
 				"error",
 				new Error(
 					`Timeout while waiting (${timeout}ms) ` +
@@ -29,37 +31,37 @@ class PerformTimed extends EventEmitter {
 		}, timeout);
 
 		if (callback.length === 0) {
-			const cbResult = this.runCallback(callback, [this.api]);
+			const cbResult = _this.runCallback(callback, [_this.api]);
 
 			if (cbResult instanceof Promise) {
 				cbResult.then(() => {
-					clearTimeout(this.timeoutID);
-					this.emit("complete");
+					clearTimeout(_this.timeoutID);
+					_this.emit("complete");
 				});
 
 				return this;
 			}
 
 			doneCallback = () => {
-				clearTimeout(this.timeoutID);
+				clearTimeout(_this.timeoutID);
 
-				this.emit("complete");
+				_this.emit("complete");
 			};
 		} else {
 			doneCallback = () => {
 				let args = [
 					() => {
-						clearTimeout(this.timeoutID);
+						clearTimeout(_this.timeoutID);
 
-						this.emit("complete");
+						_this.emit("complete");
 					}
 				];
 
 				if (callback.length > 1) {
-					args.unshift(this.api);
+					args.unshift(_this.api);
 				}
 
-				this.runCallback(callback, args);
+				_this.runCallback(callback, args);
 			};
 		}
 
@@ -69,14 +71,16 @@ class PerformTimed extends EventEmitter {
 	}
 
 	runCallback(callback, args) {
+		const _this = this;
+		
 		try {
-			return callback.apply(this.api, args);
+			return callback.apply(_this.api, args);
 		} catch (error) {
-			if (this.timeoutID) {
-				clearTimeout(this.timeoutID);
+			if (_this.timeoutID) {
+				clearTimeout(_this.timeoutID);
 			}
 
-			this.emit("error", error);
+			_this.emit("error", error);
 		}
 	}
 }

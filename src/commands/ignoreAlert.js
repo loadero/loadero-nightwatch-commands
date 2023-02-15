@@ -4,15 +4,17 @@ const EventEmitter = require("events");
 
 class IgnoreAlert extends EventEmitter {
 	command() {
-		this.api.getAlertText(value => {
+		const _this = this;
+
+		_this.api.getAlertText(value => {
 			if (value.status === 0) {
-				self.api.acceptAlert();
+				_this.api.acceptAlert();
 			}
 
-			this.emit("complete");
+			_this.emit("complete");
 		});
 
-		return this;
+		return _this;
 	}
 }
 

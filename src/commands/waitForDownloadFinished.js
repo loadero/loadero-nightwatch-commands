@@ -4,11 +4,13 @@ const EventEmitter = require("events");
 
 class WaitForDownloadFinished extends EventEmitter {
 	command(filename, timeout = 1000) {
+		const _this = this;
+
 		console.log(`[LOADERO] Waiting for '${filename}' to finish downloading`);
 
-		this.emit("complete");
+		_this.emit("complete");
 
-		return this;
+		return _this;
 	}
 }
 

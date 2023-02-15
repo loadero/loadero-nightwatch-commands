@@ -4,14 +4,16 @@ const EventEmitter = require("events");
 
 class UpdateNetwork extends EventEmitter {
     command(networkMode, networkConfig = {}) {
+		const _this = this;
+
         console.log(
             `[LOADERO] Updating network mode to "${networkMode}" ` +
                 `with config: ${JSON.stringify(networkConfig)}`
         );
 
-        this.emit('complete');
+        _this.emit('complete');
 
-        return this;
+        return _this;
     }
 }
 

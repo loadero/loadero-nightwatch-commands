@@ -4,12 +4,14 @@ const EventEmitter = require("events");
 
 class TimeExecution extends EventEmitter {
 	command(name, timedCommand, timeout = null) {
+		const _this = this;
+
 		let doneCallback;
 
 		const cmdName = name || timedCommand.name || "anonymous";
 
 		if (!/^[\w-]{1,150}$/.test(cmdName)) {
-			this.emit(
+			_this.emit(
 				"error",
 				new Error(
 					"Invalid name provided, " +
@@ -24,17 +26,17 @@ class TimeExecution extends EventEmitter {
 
 		const start = Date.now();
 
-		this.timeoutID = null;
+		_this.timeoutID = null;
 
 		if (timeout) {
 			if (timeout !== parseInt(timeout, 10)) {
-				this.emit("error", new Error("Invalid timeout value"));
+				_this.emit("error", new Error("Invalid timeout value"));
 
 				return this;
 			}
 
-			this.timeoutID = setTimeout(() => {
-				this.emit(
+			_this.timeoutID = setTimeout(() => {
+				_this.emit(
 					"error",
 					new Error(
 						`Timeout ${timeout}ms reached while ` +
@@ -45,55 +47,55 @@ class TimeExecution extends EventEmitter {
 		}
 
 		if (typeof timedCommand === "undefined") {
-			this.emit("error", new Error("Timed command is not set"));
+			_this.emit("error", new Error("Timed command is not set"));
 
 			return this;
 		}
 
 		if (timedCommand.length === 0) {
-			const cbResult = this.runCallback(timedCommand, [this.api]);
+			const cbResult = _this.runCallback(timedCommand, [_this.api]);
 
 			if (cbResult instanceof Promise) {
 				cbResult.then(() => {
-					if (this.timeoutID) {
-						clearTimeout(this.timeoutID);
+					if (_this.timeoutID) {
+						clearTimeout(_this.timeoutID);
 					}
 
-					this.logSuccess(cmdName, start);
-					this.emit("complete");
+					_this.logSuccess(cmdName, start);
+					_this.emit("complete");
 				});
 
 				return this;
 			}
 
 			doneCallback = () => {
-				this.api.perform(() => {
-					if (this.timeoutID) {
-						clearTimeout(this.timeoutID);
+				_this.api.perform(() => {
+					if (_this.timeoutID) {
+						clearTimeout(_this.timeoutID);
 					}
 
-					this.logSuccess(cmdName, start);
-					this.emit("complete");
+					_this.logSuccess(cmdName, start);
+					_this.emit("complete");
 				});
 			};
 		} else {
 			doneCallback = () => {
 				const args = [
 					() => {
-						if (this.timeoutID) {
-							clearTimeout(this.timeoutID);
+						if (_this.timeoutID) {
+							clearTimeout(_this.timeoutID);
 						}
 						
-						this.logSuccess(cmdName, start);
-						this.emit("complete");
+						_this.logSuccess(cmdName, start);
+						_this.emit("complete");
 					}
 				];
 
 				if (timedCommand.length > 1) {
-					args.unshift(this.api);
+					args.unshift(_this.api);
 				}
 
-				this.runCallback(timedCommand, args);
+				_this.runCallback(timedCommand, args);
 			};
 		}
 
@@ -103,10 +105,12 @@ class TimeExecution extends EventEmitter {
 	}
 
 	runCallback(callback, args) {
+		const _this = this;
+
 		try {
-			return callback.apply(this.api, args);
+			return callback.apply(_this.api, args);
 		} catch (error) {
-			this.emit("error", error);
+			_this.emit("error", error);
 		}
 	}
 

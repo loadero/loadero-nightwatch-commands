@@ -4,7 +4,9 @@ const EventEmitter = require("events");
 
 class TakeScreenshot extends EventEmitter {
 	command(fileName, exitOnFail) {
-		this.api.saveScreenshot(fileName, payload => {
+		const _this = this;
+
+		_this.api.saveScreenshot(fileName, payload => {
 			if (payload.status !== 0) {
 				if (exitOnFail) {
 					throw new Error("Unable to take screenshot");
@@ -13,10 +15,10 @@ class TakeScreenshot extends EventEmitter {
 				console.error("Unable to take screenshot");
 			}
 
-			this.emit("complete");
+			_this.emit("complete");
 		});
 
-		return this;
+		return _this;
 	}
 }
 
