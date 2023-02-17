@@ -11,13 +11,13 @@ class PerformTimed extends EventEmitter {
 		if (!timeout) {
 			_this.emit("error", new Error("Timeout is not set"));
 
-			return this;
+			return _this;
 		}
 
 		if (timeout !== parseInt(timeout, 10)) {
 			_this.emit("error", new Error("Invalid timeout value"));
 
-			return this;
+			return _this;
 		}
 
 		_this.timeoutID = setTimeout(() => {
@@ -39,7 +39,7 @@ class PerformTimed extends EventEmitter {
 					_this.emit("complete");
 				});
 
-				return this;
+				return _this;
 			}
 
 			doneCallback = () => {
@@ -67,7 +67,7 @@ class PerformTimed extends EventEmitter {
 
 		process.nextTick(doneCallback);
 
-		return this;
+		return _this;
 	}
 
 	runCallback(callback, args) {

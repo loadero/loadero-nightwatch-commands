@@ -21,7 +21,7 @@ class TimeExecution extends EventEmitter {
 				)
 			);
 
-			return this;
+			return _this;
 		}
 
 		const start = Date.now();
@@ -32,7 +32,7 @@ class TimeExecution extends EventEmitter {
 			if (timeout !== parseInt(timeout, 10)) {
 				_this.emit("error", new Error("Invalid timeout value"));
 
-				return this;
+				return _this;
 			}
 
 			_this.timeoutID = setTimeout(() => {
@@ -49,7 +49,7 @@ class TimeExecution extends EventEmitter {
 		if (typeof timedCommand === "undefined") {
 			_this.emit("error", new Error("Timed command is not set"));
 
-			return this;
+			return _this;
 		}
 
 		if (timedCommand.length === 0) {
@@ -65,7 +65,7 @@ class TimeExecution extends EventEmitter {
 					_this.emit("complete");
 				});
 
-				return this;
+				return _this;
 			}
 
 			doneCallback = () => {
@@ -101,7 +101,7 @@ class TimeExecution extends EventEmitter {
 
 		process.nextTick(doneCallback);
 
-		return this;
+		return _this;
 	}
 
 	runCallback(callback, args) {
