@@ -1,0 +1,22 @@
+{
+	"name": "loadero-nightwatch-commands",
+	"version": "1.0.0",
+	"description": "Loadero custom commands that can be used when localy developing tests to use with Loadero",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"preversion": "rm -rf node_modules",
+		"version": "npm install && npm test",
+		"postversion": "git push origin master && git push origin --tags"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/loadero/loadero-nightwatch-commands.git"
+	},
+	"keywords": [],
+	"author": "Loadero",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/loadero/loadero-nightwatch-commands/issues"
+	},
+	"homepage": "https://github.com/loadero/loadero-nightwatch-commands#readme"
+}
