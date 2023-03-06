@@ -6,6 +6,8 @@ class TakeScreenshot extends EventEmitter {
 	command(fileName, exitOnFail) {
 		const _this = this;
 
+		fileName = fileName.replace(/[<>:"/\\|?*]/g, "_");
+
 		_this.api.saveScreenshot(fileName, payload => {
 			if (payload.status !== 0) {
 				if (exitOnFail) {
