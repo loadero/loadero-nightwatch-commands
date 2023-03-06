@@ -8,7 +8,7 @@ class SetRequestHeader extends EventEmitter {
 
         if (!header) {
 			throw new Error("no request header provided");
-		}
+        }
         
         console.log(`[LOADERO] Setting request header '${header}' to '${value}'`);
 
