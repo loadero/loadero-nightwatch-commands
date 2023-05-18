@@ -18,6 +18,12 @@ compared to the commands used in Loadero environment.
 
 ## Usage
 
+These Nightwatch custom commands were made to simplify local script development 
+for usage in Loadero environment. By using these commands, you can write your 
+Loadero script locally and then upload it to Loadero without any changes. This 
+also allows for more rapid development because it can be debuged and ran 
+locally. 
+
 To use the commands in your tests, you need to add this package as a plugin to 
 your Nightwatch configuration file. For example, if you are using 
 `nightwatch.conf.js` file, you need to add the following line to it:
@@ -34,7 +40,7 @@ client.takeScreenshot("login_page.png");
 
 > **_NOTE:_**  In place of `client` you should use the argument that describes 
 > the nightwatch client in your test. By default Loadero creates the template 
-> using `client`.
+> using `client`. A lot of times `client` is also reffered to as `browser`.
 
 ## Commands
 
