@@ -61,5 +61,5 @@ will behave the same in both environments.
 | `updateNetwork`           | Network settings will not be updated                                                   |
 | `waitForDownloadFinished` | Function will finish instantly and not wait for download to be finished                |
 
-Full descriptions for each function and it's usage can be found in 
+Full descriptions for each function and their usage can be found in 
 [Loadero wiki](https://wiki.loadero.com/nightwatch/custom-commands/) page.
