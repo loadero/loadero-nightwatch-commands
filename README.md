@@ -66,6 +66,11 @@ and `setRequestHeader`.
 The following table shows all available commands and whether there are any 
 changes to how they function in a local environment.
 
+Full descriptions for how each function behaves in Loadero and their usage can 
+be found in [Loadero wiki](https://wiki.loadero.com/nightwatch/custom-commands/)
+page. To see the differences between local and Loadero environment, you can
+compare the descriptions in the wiki to the differences mentioned in this README.
+
 | Command                   | Differences                                                                         |
 | ------------------------- | ----------------------------------------------------------------------------------- |
 | `ignoreAlert`             | No differences                                                                      |
@@ -77,8 +82,3 @@ changes to how they function in a local environment.
 | `timeExecution`           | Execution time will be logged, but not saved                                        |
 | `updateNetwork`           | Network settings will not be updated                                                |
 | `waitForDownloadFinished` | Function will finish instantly and not wait for download to be finished             |
-
-Full descriptions for how each function behaves in Loadero and their usage can 
-be found in [Loadero wiki](https://wiki.loadero.com/nightwatch/custom-commands/)
-page. To see the differences between local and Loadero environment, you can
-compare the descriptions in the wiki to the differences mentioned in this README.
