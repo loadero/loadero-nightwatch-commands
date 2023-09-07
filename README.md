@@ -1,4 +1,4 @@
-# loadero-nightwatch-commands ![npm](https://img.shields.io/npm/v/loadero-nightwatch-commands)
+# loadero-nightwatch-commands [![npm](https://img.shields.io/npm/v/loadero-nightwatch-commands)](https://www.npmjs.com/package/loadero-nightwatch-commands)
 
 ## Installation
 
@@ -67,7 +67,7 @@ The following table shows all available commands and whether there are any
 changes to how they function in a local environment.
 
 Full descriptions for how each function behaves in Loadero and their usage can 
-be found in [Loadero wiki](https://wiki.loadero.com/nightwatch/custom-commands/)
+be found in [Loadero wiki](https://wiki.loadero.com/docs/nightwatch/custom-commands/)
 page. To see the differences between local and Loadero environment, you can
 compare the descriptions in the wiki to the differences mentioned in this README.
 
