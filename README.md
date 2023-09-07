@@ -1,17 +1,17 @@
-# loadero-nightwatch-commands
+# loadero-nightwatch-commands ![npm](https://img.shields.io/npm/v/loadero-nightwatch-commands)
 
 ## Installation
 
 Installation is as simple as running the following npm command:
 
 ```bash
-npm install --save git+https://github.com/loadero/loadero-nightwatch-commands.git
+npm install --save loadero-nightwatch-commands
 ```
 
 Make sure you run it in the directory where your `package.json` file is located.
 The command shown above will also add the dependency to your `package.json` file.
 It can also be added manually in `dependencies` object as 
-`git+https://github.com/loadero/loadero-nightwatch-commands.git`.
+`loadero-nightwatch-commands`.
 
 The latest tag will always be the most up-to-date version when 
 compared to the commands used in Loadero environment.
@@ -43,9 +43,9 @@ client => {
         .url("https://duckduckgo.com/")
         .timeExecution("locate_search_bar_and_wait", () => {
             client
-                .waitForElementVisible("#search_form_input_homepage", 10 * 1000)
-                .sendKeys("#search_form_input_homepage", "loadero")
-                .click("#search_button_homepage")
+                .waitForElementVisible("#searchbox_input", 10 * 1000)
+                .sendKeys("#searchbox_input", "loadero")
+                .click("[aria-label='Search']")
                 .waitForElementVisible("#r1-0 > div > h2", 10 * 1000)
                 .pause(reallyLongPause);
         })
