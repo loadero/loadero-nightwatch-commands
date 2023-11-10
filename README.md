@@ -41,10 +41,10 @@ client => {
     client
         // Example of timing execution without specifying a timeout.
         .url("https://duckduckgo.com/")
-        .timeExecution("locate_search_bar_and_wait", () => {
+        .timeExecution("locate_search_bar", () => {
             client
                 .waitForElementVisible("#searchbox_input", 10 * 1000)
-                .sendKeys("#searchbox_input", "loadero")
+                .sendKeys("#searchbox_input", "QA Processes")
                 .click("[aria-label='Search']")
                 .waitForElementVisible("#r1-0 > div > h2", 10 * 1000)
                 .pause(reallyLongPause);
