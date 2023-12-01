@@ -1,0 +1,16 @@
+{
+    "address": "example@gmail.com",
+    "emails": [
+        {
+            "from": "sender@gmail.com",
+            "to": "example@gmail.com",
+            "headers": {
+                "X-Header-1": "value1",
+                "X-Header-2": "value2"
+            },
+            "subject": "Help me",
+            "text/html": "I need help HTML",
+            "text/plain": "I need help PLAIN"
+        }
+    ]
+}
