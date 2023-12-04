@@ -85,11 +85,12 @@ compare the descriptions in the wiki to the differences mentioned in this README
 | `updateNetwork`           | Network settings will not be updated                                                                                                          |
 | `waitForDownloadFinished` | Function will finish instantly and not wait for download to be finished                                                                       |
 
-The `emails.json` file should be located in the same directory where `package.json` file is located in your project and should have the following structure:
+The `emails.json` file should be located in the same directory where 
+`package.json` file is located in your project and should have the following 
+structure:
 
 ```json
 {
-  "address": "email_address",
   "emails": [
     {
       "from": "email_from",
@@ -104,3 +105,7 @@ The `emails.json` file should be located in the same directory where `package.js
   ]
 }
 ```
+
+To simulate a more realistic environment, you can modify the `emails.json` file 
+mid-run to add additional emails to the array. The file will be read every time
+the `receiveEmail` command is called.

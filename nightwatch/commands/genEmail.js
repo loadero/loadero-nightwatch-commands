@@ -4,13 +4,11 @@ const EventEmitter = require("events");
 
 class GenEmail extends EventEmitter {
     command(address, callback = () => { }) {
-        const self = this;
+		const _this = this;
 
-        self.emit("complete");
-
-        self.api.perform(() => {
+        _this.api.perform(() => {
             let value = address
-
+            
             if (!address.includes("@")) {
                 value = `${address}@mailinator.com`
             }
@@ -18,7 +16,9 @@ class GenEmail extends EventEmitter {
             callback(value)
         });
 
-        return self;
+        _this.emit("complete");
+        
+        return _this;
     }
 }
 

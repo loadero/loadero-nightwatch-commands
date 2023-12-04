@@ -5,27 +5,27 @@ const fs = require("fs");
 
 class ReceiveEmail extends EventEmitter {
     command(address, callback = () => { }) {
-        const self = this;
+		const _this = this;
 
         if (!address) {
-            self.emit("error", Error("No email address provided"));
+            _this.emit("error", Error("No email address provided"));
 
-            return self;
+            return _this;
         }
         
         if (fs.existsSync("emails.json")) {            
             const content = fs.readFileSync("emails.json", "utf-8")
 
-            self.emit("complete");
-            self.api.perform(() => {callback(JSON.parse(content)["emails"])})
+            _this.api.perform(() => {callback(JSON.parse(content)["emails"])})
+            _this.emit("complete");
             
-            return self;
+            return _this;
         }
         
-        self.emit("complete");
-        self.api.perform(() => {callback([])})
+        _this.api.perform(() => {callback([])})
+        _this.emit("complete");
         
-        return self;
+        return _this;
     }
 }
 
