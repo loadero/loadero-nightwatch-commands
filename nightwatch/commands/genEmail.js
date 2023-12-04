@@ -8,7 +8,6 @@ class GenEmail extends EventEmitter {
 
         _this.api.perform(() => {
             let value = address
-            
             if (!address.includes("@")) {
                 value = `${address}@mailinator.com`
             }
