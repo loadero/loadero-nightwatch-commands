@@ -73,7 +73,7 @@ compare the descriptions in the wiki to the differences mentioned in this README
 
 | Command                   | Differences                                                                                                                                   |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `genEmail`                | Full email or only first part can be provided, if only the first part is provided than `@mailinator` is appended                              |
+| `genEmail`                | Full email or only first part can be provided, if only the first part is provided then `@mailinator.com` is appended                          |
 | `ignoreAlert`             | No differences                                                                                                                                |
 | `performTimed`            | No differences                                                                                                                                |
 | `receiveEmail`            | By default an empty array will be returned, but `emails.json` file can be saved in the working directory which will contain all of the emails |
