@@ -15,9 +15,9 @@ class TimeExecution extends EventEmitter {
 				"error",
 				new Error(
 					"Invalid name provided, " +
-						"name should not exceed 150 characters in length " +
-						"and can only contain alphanumeric characters, " +
-						"underscores and hyphens"
+					"name should not exceed 150 characters in length " +
+					"and can only contain alphanumeric characters, " +
+					"underscores and hyphens"
 				)
 			);
 
@@ -40,7 +40,7 @@ class TimeExecution extends EventEmitter {
 					"error",
 					new Error(
 						`Timeout ${timeout}ms reached while ` +
-							`timing the execution of '${cmdName}'.`
+						`timing the execution of '${cmdName}'.`
 					)
 				);
 			}, timeout);
@@ -85,7 +85,7 @@ class TimeExecution extends EventEmitter {
 						if (_this.timeoutID) {
 							clearTimeout(_this.timeoutID);
 						}
-						
+
 						_this.logSuccess(cmdName, start);
 						_this.emit("complete");
 					}
@@ -120,7 +120,7 @@ class TimeExecution extends EventEmitter {
 
 		console.log(
 			`[LOADERO] Execution time for ` +
-				`'${name}': ${duration}ms (start: ${start}; end: ${end}).`
+			`'${name}': ${duration}ms (start: ${start}; end: ${end}).`
 		);
 	}
 }

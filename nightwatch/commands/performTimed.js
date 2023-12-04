@@ -3,7 +3,7 @@
 const EventEmitter = require("events");
 
 class PerformTimed extends EventEmitter {
-	command(callback = () => {}, timeout) {
+	command(callback = () => { }, timeout) {
 		const _this = this;
 
 		let doneCallback;
@@ -25,7 +25,7 @@ class PerformTimed extends EventEmitter {
 				"error",
 				new Error(
 					`Timeout while waiting (${timeout}ms) ` +
-						`for the .performTimed() command callback to be called.`
+					`for the .performTimed() command callback to be called.`
 				)
 			);
 		}, timeout);
@@ -72,7 +72,7 @@ class PerformTimed extends EventEmitter {
 
 	runCallback(callback, args) {
 		const _this = this;
-		
+
 		try {
 			return callback.apply(_this.api, args);
 		} catch (error) {

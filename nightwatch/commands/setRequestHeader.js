@@ -3,19 +3,19 @@
 const EventEmitter = require("events");
 
 class SetRequestHeader extends EventEmitter {
-    command(header, value) {
+	command(header, value) {
 		const _this = this;
 
-        if (!header) {
+		if (!header) {
 			throw new Error("no request header provided");
-        }
-        
-        console.log(`[LOADERO] Setting request header '${header}' to '${value}'`);
+		}
 
-        _this.emit('complete');
+		console.log(`[LOADERO] Setting request header '${header}' to '${value}'`);
 
-        return _this;
-    }
+		_this.emit('complete');
+
+		return _this;
+	}
 }
 
 module.exports = SetRequestHeader;
