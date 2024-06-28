@@ -1,6 +1,6 @@
 {
 	"name": "loadero-nightwatch-commands",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "Loadero custom commands that can be used when localy developing tests to use with Loadero",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
