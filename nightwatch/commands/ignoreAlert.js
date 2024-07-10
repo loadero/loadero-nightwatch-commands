@@ -8,11 +8,11 @@ class IgnoreAlert extends EventEmitter {
 
 		_this.api.alerts.getText(value => {
 			const { error, status } = value;
-			const { message } = error || {};
+			const { name } = error || {};
 
 			if (status === 0) {
 				_this.api.alerts.accept();
-			} else if (message && message.includes("no such alert")) {
+			} else if (name && name.includes("NoSuchAlert")) {
 				console.log("[INFO] Loadero: No alert is open.");
 			}
 
